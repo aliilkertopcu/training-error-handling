@@ -1,0 +1,41 @@
+<mvc:View
+	controllerName="com.prodea.training.employeeapp2.controller.Employee"
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true"
+	xmlns="sap.m">
+	<Page title="{i18n>title}">
+		<content/>
+		<Table
+			id="idTable"
+			items="{json>/results}">
+			<columns>
+				<Column hAlign="End">
+					<Text text="Pernr"/>
+				</Column>
+				<Column width="12em">
+					<Text text="Name"/>
+				</Column>
+				<Column>
+					<Text text="Surname"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<ObjectIdentifier title="{json>Pernr}"/>
+						<Text text="{json>Name}"/>
+						<Text text="{json>Surname}"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<MessageView items="{json>/messages}">
+			<items>
+				<MessageItem
+					subtitle="{json>message}"
+					type="{ path: 'json>severity', formatter: '.formatter.capitalizeFirstLetter' }"
+					title="{json>code}"/>
+			</items>
+		</MessageView>
+	</Page>
+</mvc:View>
